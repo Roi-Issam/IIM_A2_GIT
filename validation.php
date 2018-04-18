@@ -8,8 +8,9 @@ if(	isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
     $email = $_POST['email'];
     $password = $_POST['password'];
     if (isUsernameAvailable($db, $username) && isEmailAvailable($db, $email)){
-        userRegistration($db, $username, $email, $password);
-        userConnection($db, $email, $password);
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+        userRegistration($db, $username, $email, $passwordHash);
+        userConnection($db, $email, $passwordHash);
         header('Location: dashboard.php');
     }elseif(!isEmailAvailable($db, $email)){
         $_SESSION['message'] = "Email indisponible";

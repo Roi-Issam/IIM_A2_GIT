@@ -57,38 +57,40 @@ SUMMARY
 		$email -> 			field value : email
 		$password -> 		field value : password
 	*/
-	function userConnection(PDO $db, $email, $password){
-		if(!empty($email) && !empty($password)){
-			//Requête SQL
-			$sql = "SELECT * FROM users WHERE email = :email AND password = :password LIMIT 1";
+function userConnection(PDO $db, $email, $password)
+{
+    if (!empty($email) && !empty($password)) {
+        //Requête SQL
+        $sql = "SELECT * FROM users WHERE email = :email LIMIT 1";
 
-			$req = $db->prepare($sql);
-			$req->execute(array(
-				':email' => $email,
-				':password' => $password
-			));
+        $req = $db->prepare($sql);
+        $req->execute(array(
+            ':email' => $email,
+        ));
 
-			$result = $req->fetch(PDO::FETCH_ASSOC);
+        $data = $req->fetch(PDO::FETCH_ASSOC);
+        $passwordHash = $data['password'];
+        $result = password_verify($password, $passwordHash);
 
-			//Si le fetch réussi, alors un résultat a été retourné donc le couple email / password est correct
-			if($result == true){
-				
-				//on définit la SESSION
-				$_SESSION['id'] = $result['id'];
-				$_SESSION['username'] = $result['username'];
-				$_SESSION['email'] = $result['email'];
-				$_SESSION['created_at'] = $result['created_at'];
-				$_SESSION['image'] = $result['picture'];
+        //Si le fetch réussi, alors un résultat a été retourné donc le couple email / password est correct
+        if ($result == true) {
 
-				return true;
-			}else{
-				return false;
-			}
-		}else{
+            //on définit la SESSION
+            $_SESSION['id'] = $result['id'];
+            $_SESSION['username'] = $result['username'];
+            $_SESSION['email'] = $result['email'];
+            $_SESSION['created_at'] = $result['created_at'];
+            $_SESSION['image'] = $result['picture'];
 
-			return false;
-		}
-	}
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+
+        return false;
+    }
+}
 
 	/*1.3!listMusics
 		return :
