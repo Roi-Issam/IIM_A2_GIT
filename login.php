@@ -13,17 +13,21 @@ require('model/functions.fn.php');
 
 if (isset($_POST['email']) && isset($_POST['password'])) {
     if (!empty($_POST['email']) && !empty($_POST['password'])) {
+
         $email = htmlspecialchars($_POST['email']);
         $password = htmlspecialchars($_POST['password']);
+
         // Force user connection to access dashboard
         userConnection($db, $email, $password);
         if (userConnection($db, $email, $password)) {
+
             header('Location: dashboard.php');
         } else {
-            $error = "Mauvais identifiants";
+            $error = "Adresse e-mail ou mdp incorrect";
+
         }
     } else {
-        $error = 'Champs requis !';
+        $error = 'Veuillez remplir tout les champs';
     }
 }
 
