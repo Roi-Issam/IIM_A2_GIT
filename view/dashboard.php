@@ -43,9 +43,44 @@
 										<small class="date pull-right"><i class="fa fa-clock-o"></i> <?php echo $music['created_at']; ?></small>
 									</p>
 								</div>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                    Commenter
+                                </button>
 							</div>
 						</div>
 					<?php } ?>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Commenter</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="post" action="">
+                                        <div class="form-group">
+                                            <label for="name">Name</label>
+                                            <input type="text" name="name" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="name">addresse mail</label>
+                                            <input type="email" name="email" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="name">Sujet</label>
+                                            <textarea name="subject" class="form-control" rows="4" cols="50"> </textarea>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+                                    <button type="submit" class="btn btn-default">Commenter</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 					</div>
 				</div>
 			</div>
