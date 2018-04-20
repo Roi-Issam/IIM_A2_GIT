@@ -45,6 +45,16 @@
 								</div>
 							</div>
                             <div>
+                                <div>
+                                    <ul class="list-group">
+                                        <?php $comments = listComment($db, $music['id']); ?>
+                                        <?php foreach($comments as $comment){ ?>
+                                            <li class="list-group-item">
+                                                <?php echo $comment['text'] ?>
+                                            </li>
+                                        <?php } ?>
+                                    </ul>
+                                </div>
                                 <form method="post" action="dashboard.php">
                                     <div class="form-group">
                                         <label for="name">Commentaire</label>
@@ -53,14 +63,6 @@
                                     <input type="hidden" name="music_id" value="<?php echo $music['id'] ?>">
                                 <button type="submit" class="btn btn-default">Commenter</button>
                             </form>
-                            </div>
-                            <div>
-                                <ul class="list-group">
-                                    <?php $comments = listComment($db, $music['id']); ?>
-                                    <?php foreach($comments as $comment){ ?>
-                                        <li class="list-group-item"><?php echo $comment['text'] ?></li>
-                                    <?php } ?>
-                                </ul>
                             </div>
 						</div>
 					<?php } ?>
