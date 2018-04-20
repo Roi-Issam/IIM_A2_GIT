@@ -18,12 +18,10 @@ if (isset($_POST['subject']) && !empty($_POST['subject'])){
 
     $text = $_POST['subject'];
     $user_id = $_SESSION['id'];
+    $music_id = $_POST['music_id'];
 
-    comment($db, $user_id, $text);
+    comment($db, $user_id, $text, $music_id);
 }
-
-$comments = listComment($db);
-
 
 
 $musics = listMusics($db);

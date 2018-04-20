@@ -44,40 +44,26 @@
 									</p>
 								</div>
 							</div>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                Commenter
-                            </button>
-
-                            <ul class="list-group">
-                                <?php foreach($comments as $comment){ ?>
-                                    <li class="list-group-item"><?php echo $comment['text'] ?></li>
-                                <?php } ?>
-                            </ul>
+                            <div>
+                                <form method="post" action="dashboard.php">
+                                    <div class="form-group">
+                                        <label for="name">Commentaire</label>
+                                        <textarea name="subject" class="form-control" rows="4" cols="50"> </textarea>
+                                    </div>
+                                    <input type="hidden" name="music_id" value="<?php echo $music['id'] ?>">
+                                <button type="submit" class="btn btn-default">Commenter</button>
+                            </form>
+                            </div>
+                            <div>
+                                <ul class="list-group">
+                                    <?php $comments = listComment($db, $music['id']); ?>
+                                    <?php foreach($comments as $comment){ ?>
+                                        <li class="list-group-item"><?php echo $comment['text'] ?></li>
+                                    <?php } ?>
+                                </ul>
+                            </div>
 						</div>
 					<?php } ?>
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Commenter</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form method="post" action="dashboard.php">
-                                        <div class="form-group">
-                                            <label for="name">Commentaire</label>
-                                            <textarea name="subject" class="form-control" rows="4" cols="50"> </textarea>
-                                        </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
-                                    <button type="submit" class="btn btn-default">Commenter</button>
-                                </div>
-                                </form>
-                            </div>
-                        </div>
                     </div>
 					</div>
 				</div>
