@@ -47,6 +47,12 @@
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                 Commenter
                             </button>
+
+                            <ul class="list-group">
+                                <?php foreach($comments as $comment){ ?>
+                                    <li class="list-group-item"><?php echo $comment['text'] ?></li>
+                                <?php } ?>
+                            </ul>
 						</div>
 					<?php } ?>
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -59,7 +65,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form method="post" action="/dashboard.php">
+                                    <form method="post" action="dashboard.php">
                                         <div class="form-group">
                                             <label for="name">Commentaire</label>
                                             <textarea name="subject" class="form-control" rows="4" cols="50"> </textarea>
