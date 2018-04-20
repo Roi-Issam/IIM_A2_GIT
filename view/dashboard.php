@@ -43,10 +43,10 @@
 										<small class="date pull-right"><i class="fa fa-clock-o"></i> <?php echo $music['created_at']; ?></small>
 									</p>
 								</div>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                    Commenter
-                                </button>
 							</div>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                Commenter
+                            </button>
 						</div>
 					<?php } ?>
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

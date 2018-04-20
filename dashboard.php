@@ -14,6 +14,8 @@ require('model/functions.fn.php');
 
 $musics = listMusics($db);
 
+
+
 include 'view/_header.php';
 include 'view/dashboard.php';
 include 'view/_footer.php';
