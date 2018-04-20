@@ -59,17 +59,17 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form method="post" action="">
+                                    <form method="post" action="/dashboard.php">
                                         <div class="form-group">
                                             <label for="name">Commentaire</label>
                                             <textarea name="subject" class="form-control" rows="4" cols="50"> </textarea>
                                         </div>
-                                    </form>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
                                     <button type="submit" class="btn btn-default">Commenter</button>
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </div>
