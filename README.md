@@ -44,7 +44,11 @@ Inscription
 * Enfin, fusionnez la branche register dans la branche master, puis pushez sur master. (n'oublier pas de récupérer les potentiels changements en faisant un git pull)
 
 
+# Travail: Charles
+* inscription.
 * fonction commentaire.
+
+
 
 
 
