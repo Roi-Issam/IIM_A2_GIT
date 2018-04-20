@@ -17,8 +17,13 @@ SUMMARY
 ********************************************************************/
 
 /**************************************************
-					1!FUNCTIONS
-**************************************************/
+ * 1!FUNCTIONS
+ *************************************************
+ * @param PDO $db
+ * @param $username
+ * @param $email
+ * @param $password
+ */
 		
 
 	/*1.1!userRegistration
@@ -285,3 +290,44 @@ SUMMARY
 			':id' => $user_id
 		));
 	}
+
+
+	function comment(PDO $db, $user_id, $text, $music_id){
+        $sql = "
+			INSERT INTO
+				comments
+			SET
+				user_id = :user_id,
+				text = :text,
+				music_id = :music_id
+		";
+
+        $req = $db->prepare($sql);
+        $req->execute(array(
+            ':user_id' => $user_id,
+            ':text' => $text,
+            ':music_id' => $music_id,
+        ));
+
+        return true;
+    }
+
+
+    function listComment(PDO $db, $music_id){
+       // $sql = "SELECT * FROM comments INNER JOIN musics ON comments.music_id = musics.id";
+        //$sql = "SELECT comments.*, musics.id AS music_id FROM comments INNER JOIN musics ON comments.music_id = musics.id ORDER BY comments.created_at DESC";
+
+        $sql = "SELECT comments.*, users.id AS user_id, users.username FROM comments INNER JOIN users ON comments.user_id = users.id AND comments.music_id = :musicsid ORDER BY comments.created_at DESC";
+
+
+
+        $req = $db->prepare($sql);
+        $req->execute(array(
+            ':musicsid' => $music_id
+        ));
+
+
+        $results = $req->fetchAll(PDO::FETCH_ASSOC);
+
+        return $results;
+    }
