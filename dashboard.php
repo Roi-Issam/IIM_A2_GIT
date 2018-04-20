@@ -7,6 +7,13 @@ require('model/functions.fn.php');
 	Dashboard
 ===============================*/
 
+
+if(!isset($_SESSION) OR empty($_SESSION)){
+    header('Location: login.php');
+    exit();
+}
+
+
 if (isset($_POST['subject']) && !empty($_POST['subject'])){
 
     $text = $_POST['subject'];
@@ -15,12 +22,9 @@ if (isset($_POST['subject']) && !empty($_POST['subject'])){
     comment($db, $user_id, $text);
 }
 
+$comments = listComment($db);
 
 
- if(!isset($_SESSION) OR empty($_SESSION)){
-	header('Location: login.php');
-	exit();
-}
 
 $musics = listMusics($db);
 

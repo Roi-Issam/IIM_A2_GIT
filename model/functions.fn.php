@@ -17,8 +17,13 @@ SUMMARY
 ********************************************************************/
 
 /**************************************************
-					1!FUNCTIONS
-**************************************************/
+ * 1!FUNCTIONS
+ *************************************************
+ * @param PDO $db
+ * @param $username
+ * @param $email
+ * @param $password
+ */
 		
 
 	/*1.1!userRegistration
@@ -285,3 +290,34 @@ SUMMARY
 			':id' => $user_id
 		));
 	}
+
+
+	function comment(PDO $db, $user_id, $text){
+        $sql = "
+			INSERT INTO
+				comments
+			SET
+				user_id = :user_id,
+				text = :text
+		";
+
+        $req = $db->prepare($sql);
+        $req->execute(array(
+            ':user_id' => $user_id,
+            ':text' => $text,
+        ));
+
+        return true;
+    }
+
+
+    function listComment(PDO $db){
+        $sql = "SELECT comments.*, users.id AS user_id, users.username, users.picture FROM comments LEFT JOIN users ON comments.user_id = users.id ORDER BY comments.created_at DESC";
+
+        $req = $db->prepare($sql);
+        $req->execute();
+
+        $results = $req->fetchAll(PDO::FETCH_ASSOC);
+
+        return $results;
+    }
