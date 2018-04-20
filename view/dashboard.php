@@ -61,15 +61,7 @@
                                 <div class="modal-body">
                                     <form method="post" action="">
                                         <div class="form-group">
-                                            <label for="name">Name</label>
-                                            <input type="text" name="name" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="name">addresse mail</label>
-                                            <input type="email" name="email" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="name">Sujet</label>
+                                            <label for="name">Commentaire</label>
                                             <textarea name="subject" class="form-control" rows="4" cols="50"> </textarea>
                                         </div>
                                     </form>
