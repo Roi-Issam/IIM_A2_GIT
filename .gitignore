@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 config/config.php
 config/config-sample.php
 musics
 .idea
 .DS_Store
+=======
+config/config.php
+config/config-sample.php
+musics
+.idea
+.DS_Store
+>>>>>>> origin/hachage
