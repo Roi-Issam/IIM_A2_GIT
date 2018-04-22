@@ -40,7 +40,8 @@ SUMMARY
 				  SET
 				  username = :username,
 				  email = :email,
-				  password = :password";
+				  password = :password
+				  ";
 
 
 		$req = $db->prepare($sql);
